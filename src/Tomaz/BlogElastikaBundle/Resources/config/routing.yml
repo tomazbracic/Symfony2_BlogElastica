@@ -1,3 +1,19 @@
-tomaz_blog_elastika_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TomazBlogElastikaBundle:Default:index }
+# src/Tomaz/BlogElastikaBundle/Resources/config/routing.yml
+TomazBlogElastikaBundle_homepage:
+    pattern:  /
+    defaults: { _controller: TomazBlogElastikaBundle:Page:index }
+    requirements:
+        _method:  GET
+
+TomazBlogElastikaBundle_about:
+    pattern: /about
+    defaults: { _controller: TomazBlogElastikaBundle:Page:about }
+    requirements:
+        _method:  GET
+
+TomazBlogElastikaBundle_contact:
+    pattern: /contact
+    defaults: { _controller: TomazBlogElastikaBundle:Page:contact }
+    requirements:
+        _method:  GET|POST
+
