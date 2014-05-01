@@ -1,0 +1,7 @@
+parameters:
+#    tomaz_blog_elastika.example.class: Tomaz\BlogElastikaBundle\Example
+
+services:
+#    tomaz_blog_elastika.example:
+#        class: %tomaz_blog_elastika.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

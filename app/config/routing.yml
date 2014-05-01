@@ -1,0 +1,4 @@
+tomaz_blog_elastika:
+    resource: "@TomazBlogElastikaBundle/Resources/config/routing.yml"
+    prefix:   /
+
