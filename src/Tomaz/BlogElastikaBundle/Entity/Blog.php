@@ -4,11 +4,12 @@
 
 namespace Tomaz\BlogElastikaBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Tomaz\BlogElastikaBundle\Entity\Repository\BlogRepository")
  * @ORM\Table(name="blog")
  * @ORM\HasLifecycleCallbacks
  */
@@ -46,6 +47,9 @@ class Blog
      */
     protected $tags;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
     protected $comments;
 
     /**
@@ -61,6 +65,8 @@ class Blog
 
     public function __construct()
     {
+        $this->comments = new ArrayCollection();
+
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -147,9 +153,13 @@ class Blog
      *
      * @return string 
      */
-    public function getBlog()
+    public function getBlog($length = null)
     {
-        return $this->blog;
+        if (false === is_null($length) && $length > 0) {
+            return substr($this->blog, 0, $length);
+        } else {
+            return $this->blog;
+        }
     }
 
     /**
@@ -243,5 +253,43 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Tomaz\BlogElastikaBundle\Entity\Comment $comments
+     * @return Blog
+     */
+    public function addComment(\Tomaz\BlogElastikaBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Tomaz\BlogElastikaBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Tomaz\BlogElastikaBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

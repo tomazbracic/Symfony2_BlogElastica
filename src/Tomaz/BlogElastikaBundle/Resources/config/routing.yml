@@ -23,3 +23,24 @@ TomazBlogElastikaBundle_blog_show:
     requirements:
         _method:  GET
         id: \d+
+
+TomazBlogElastikaBundle_comment_create:
+    pattern: /comment/{blog_id}
+    defaults: { _controller: TomazBlogElastikaBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+
+
+TomazBlogElastikaBundle_comment_new:
+    pattern:  /new/{blog_id}
+    defaults: { _controller: TomazBlogElastikaBundle:Comment:new }
+    requirements:
+        _method:  GET
+        blog_id: \d+
+
+TomazBlogElastikaBundle_comment_create:
+    pattern:  /comment/{blog_id}
+    defaults: { _controller: TomazBlogElastikaBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+

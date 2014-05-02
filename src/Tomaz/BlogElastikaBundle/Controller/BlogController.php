@@ -25,8 +25,12 @@ class BlogController extends Controller
             throw $this->createNotFoundException('Unable to find blog post');
         }
 
+        $comments = $em->getRepository('TomazBlogElastikaBundle:Comment')
+            ->getCommentsForBlog($blog->getId());
+
         return $this->render('TomazBlogElastikaBundle:Blog:show.html.twig', array(
-            'blog' => $blog,
+            'blog'         => $blog,
+            'comments'     => $comments
         ));
     }
 }

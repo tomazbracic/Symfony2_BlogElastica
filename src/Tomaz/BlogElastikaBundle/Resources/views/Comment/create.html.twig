@@ -1,0 +1,8 @@
+{% extends 'TomazBlogElastikaBundle::layout.html.twig' %}
+
+{% block title %}Add Comment{% endblock%}
+
+{% block body %}
+    <h1>Add comment for blog post "{{ comment.blog.title }}"</h1>
+    {% include 'TomazBlogElastikaBundle:Comment:form.html.twig' with { 'form': form } %}
+{% endblock %}
