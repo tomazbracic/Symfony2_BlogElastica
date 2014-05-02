@@ -6,7 +6,7 @@ Nothing fancy, just a learning project.
 
 ### Installation
 
-Clone the project
+Clone the project   
 In terminal do
 
 ```
