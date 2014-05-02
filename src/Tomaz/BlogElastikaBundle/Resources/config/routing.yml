@@ -17,3 +17,9 @@ TomazBlogElastikaBundle_contact:
     requirements:
         _method:  GET|POST
 
+TomazBlogElastikaBundle_blog_show:
+    pattern: /{id}
+    defaults: { _controller: TomazBlogElastikaBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
