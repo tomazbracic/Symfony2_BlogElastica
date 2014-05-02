@@ -6,9 +6,11 @@ Nothing fancy, just a learning project.
 
 ### Installation
 
-Just clone the project in terminal do
+Clone the project
+In terminal do
 
 ```
 cd <PROJECT_HOME>
 cd web; php -S localhost:8000 router.php
+
 ```
